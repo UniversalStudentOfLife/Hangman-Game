@@ -9,10 +9,6 @@ var wordList1 = ["squirtle", "charmander", "bulbasaur", "pikachu"];
 var userWins = 0; 
 var remainingGuesses = 0;
 
-
-
-
-
 //var randomWord = wordList1[Math.floor(Math.random() * wordList1.length)];
 
 //alert(randomWord);
@@ -45,13 +41,14 @@ function randomizer (array) {
 
 function blankCreator (randomWord) {
 
+ blankString = ""; 
 
-for (var i = 0 < randomWord.length; i++) {
+	for (var i = 0; i < randomWord.length; i++) {
 
-	blankString += "_"
+		blankString += "_" + " ";
+	}
 
-	alert(blankString);	
-
+	return blankString;
 }
 
 
@@ -59,5 +56,7 @@ for (var i = 0 < randomWord.length; i++) {
 
 
  randomWord = randomizer(wordList1); 
+ blankWord = blankCreator(randomWord);
 
 alert(randomWord);
+alert(blankWord);
