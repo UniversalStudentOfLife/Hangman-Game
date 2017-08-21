@@ -17,9 +17,14 @@ document.onkeyup = function(event) {
     if(chosenWord.toLowerCase().indexOf(userKey.toLowerCase()) === -1){
     
         if(remainingGuesses == 0){
-           randomizer(wordList1);
+	
+				randomizer(wordList1);
+
            remainingGuesses = 10;
+           $("#lettersGuessed").text("");
+
          }else{
+
            remainingGuesses--;
          }
     }
