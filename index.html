@@ -7,6 +7,10 @@
     <!-- Our CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+	<!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
 	<title>Hangman-Game</title>
 </head>
 
@@ -26,12 +30,13 @@
 
 </nav>
 <body>
+
 	<div class="fluid-container">
 		<div class="row">
 			
 			<div class="col-md-3">1</div>
 			<div class="col-md-3" >2
-				<div style="border-style: dotted;"">
+				<div class="baseline" style="border-style: dotted; text-align: center; ">
 					
 					<p>
 											
@@ -40,9 +45,10 @@
 					</p>
 
 					<p> Wins <!--wins here --> </p>
+						<div id="userWins"></div>
 
 					<p> Current Word </p>
-					<div id="currentWord"></div>
+					<div id="currentWord" style=" letter-spacing: 5px;"></div>
 
 					<p>Number of Guesses Remaining</p>
 					<span id="remainingGuesses"></span>
@@ -60,7 +66,9 @@
 			</div>
 			<div class="col-md-3">3
 
-				<p style="border-style: dotted"> hangman here
+				<p class="baseline" style="border-style: dotted"> hangman here
+
+				<img src="">
 					
 				</p>
 
@@ -77,5 +85,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </<body>
-</body>>
-</html>s
+</body>
+</html>

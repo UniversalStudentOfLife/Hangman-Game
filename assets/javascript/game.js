@@ -7,6 +7,7 @@ var remainingGuesses = 10; //come back later to do math based on how long the wo
 var underscoredWord;
 var selectedWord;
 var Userkey;
+var wordsGuessed = "";
 
 
 // Capture the user's key 
@@ -18,20 +19,36 @@ document.onkeyup = function(event) {
     
         if(remainingGuesses == 0){
 	
-				randomizer(wordList1);
-
-           remainingGuesses = 10;
-           $("#lettersGuessed").text("");
+			randomizer(wordList1);
+			//RESET VARIABLES;
+			wordsGuessed = "";
+			userWins = 0;
+          	remainingGuesses = 10;
+          	$("#lettersGuessed").text("");
 
          }else{
 
-           remainingGuesses--;
+           //remainingGuesses--;
          }
     }
 
-	//perform updates
-	$("#remainingGuesses").text(remainingGuesses);
-	$("#lettersGuessed").append(userKey+", ");
+	//Run check to see if user guessed this letter already.
+	if (wordsGuessed.includes(userKey)) {
+
+		//do nothing
+		//alert("you already pressed that key!"
+
+	} else {
+
+		remainingGuesses--;
+		$("#remainingGuesses").text(remainingGuesses);
+		wordsGuessed += userKey; 
+		$("#lettersGuessed").append(userKey+", ");
+		console.log(wordsGuessed);
+
+		//alert("new letter! Yay!")
+	}
+
 
 
 	checkCharacter(userKey);
