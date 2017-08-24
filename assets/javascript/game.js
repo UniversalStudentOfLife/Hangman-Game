@@ -2,35 +2,41 @@
 //Global Variables
 var randomWord;
 var wordList1 = ["squirtle", "charmander", "bulbasaur", "pikachu"];
-var userWins = 0; 
+var userWins = -1; 
 var remainingGuesses = 10; //come back later to do math based on how long the word is, give an additional 5 guesses
 var underscoredWord;
-var selectedWord;
 var Userkey;
 var wordsGuessed = "";
 
-
 // Capture the user's key 
+
 document.onkeyup = function(event) {
 	var userKey = event.key;
 	userKey = userKey.toLowerCase();
 
     if(chosenWord.toLowerCase().indexOf(userKey.toLowerCase()) === -1){
-    
+
+    	if (remainingGuesses == 0 && wordsGuessed === document.getElementById("currentWord").innerText) {
+
+    		increaseWins(userWins);
+    		console.log(userWins);
+    	}
+
+    	    
         if(remainingGuesses == 0){
 	
 			randomizer(wordList1);
-			//RESET VARIABLES;
-			wordsGuessed = "";
 			userWins = 0;
           	remainingGuesses = 10;
           	$("#lettersGuessed").text("");
+          	$("#userWins").text(userWins);
 
          }else{
 
            //remainingGuesses--;
          }
     }
+
 
 	//Run check to see if user guessed this letter already.
 	if (wordsGuessed.includes(userKey)) {
@@ -40,6 +46,7 @@ document.onkeyup = function(event) {
 
 	} else {
 
+		increaseWins(userWins);
 		remainingGuesses--;
 		$("#remainingGuesses").text(remainingGuesses);
 		wordsGuessed += userKey; 
@@ -49,11 +56,14 @@ document.onkeyup = function(event) {
 		//alert("new letter! Yay!")
 	}
 
-
-
 	checkCharacter(userKey);
 	console.log(userKey)
 }
+
+	function increaseWins(){
+	  userWins++;
+	  return userWins;
+	}
 
 
 //Randomly picks a word out of the array that is passed to the function.
@@ -65,7 +75,6 @@ document.onkeyup = function(event) {
 
 	console.log(chosenWord);
 	console.log(underscoredWord);
-	//return randomSelectedWord;
 }
 
 
@@ -93,5 +102,6 @@ function checkCharacter(n) {
     $("#remainingGuesses").text(remainingGuesses);
   }
 }
+
 
 randomizer(wordList1);
